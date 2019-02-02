@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CalendarView;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.view.View;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
+import devs.mulham.horizontalcalendar.HorizontalCalendarView;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private SlidingUpPanelLayout mLayout;
     private CalendarView calendar;
     private View task_onhold;
+    private ImageView arrowDown,arrowUp;
 
     private TextView text1l;
 
@@ -51,17 +54,20 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Scheduler");
 
+        arrowDown = (ImageView) findViewById(R.id.arrow_down);
+        arrowUp = (ImageView) findViewById(R.id.arrow_up);
         text1l = (TextView) findViewById(R.id.taskInfo);
 
         mLayout = (SlidingUpPanelLayout) findViewById(R.id.activity_main);
 
         task_onhold = (View) findViewById(R.id.task_onhold);
 
-        task_onhold.setVisibility(View.GONE);
+
 
         calendar = (CalendarView) findViewById(R.id.calendar);
-
+        task_onhold.setVisibility(View.GONE);
         calendar.setVisibility(View.GONE);
+
 
         addData();
 
@@ -90,17 +96,28 @@ public class MainActivity extends AppCompatActivity {
                 .defaultSelectedDate(Calendar.getInstance())
                 .build();
 
-        horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
+        arrowDown.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDateSelected(Calendar date, int position) {
-
-            }
-            @Override
-            public boolean onDateLongClicked(Calendar date, int position) {
+            public void onClick(View view) {
                 task_onhold.setVisibility(View.GONE);
                 calendar.setVisibility(View.VISIBLE);
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
-                return true;
+            }
+        });
+
+        arrowUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLayout.setPanelState(PanelState.COLLAPSED);
+
+            }
+        });
+
+
+        mLayout.setFadeOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
             }
         });
 
@@ -111,6 +128,25 @@ public class MainActivity extends AppCompatActivity {
                 calendar.setVisibility(View.GONE);
                 task_onhold.setVisibility(View.VISIBLE);
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+
+            }
+        });
+
+        horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
+            @Override
+            public void onDateSelected(Calendar date, int position) {
+
+            }
+
+            @Override
+            public void onCalendarScroll(HorizontalCalendarView calendarView,
+                                         int dx, int dy) {
+
+            }
+
+            @Override
+            public boolean onDateLongClicked(Calendar date, int position) {
+                return true;
             }
         });
 

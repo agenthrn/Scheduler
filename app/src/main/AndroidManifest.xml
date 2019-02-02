@@ -17,7 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".CreateTask" />
-        <activity android:name=".CalendarActivity"></activity>
         <activity android:name=".SearchTask"></activity>
     </application>
 

@@ -22,10 +22,12 @@
         </android.support.v7.widget.Toolbar>
 
         <EditText
+            android:inputType="textMultiLine"
             android:layout_width="match_parent"
+            android:layout_height ="wrap_content"
             android:layout_below="@id/toolbar"
             android:id="@+id/etTask"
-            android:layout_height="39dp"
+            android:minLines="2"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
@@ -41,7 +43,7 @@
             android:layout_marginStart="8dp"
             android:layout_below="@id/etTask"
             android:focusable="false"
-            android:hint="Date"
+            android:hint="Deadline"
             android:inputType="date"
              />
 
@@ -59,6 +61,7 @@
 
         <EditText
             android:id="@+id/etColor"
+            android:focusable="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -78,30 +81,66 @@
         android:layout_height="wrap_content"
         tools:showIn="@layout/activity_create_task">
 
-        <DatePicker
-            android:id="@+id/datePicker1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:datePickerMode="spinner"
-            android:calendarViewShown="false"/>
-        <TimePicker
-            android:layout_width="wrap_content"
-            android:id="@+id/timePicker"
-            android:layout_toRightOf="@id/datePicker1"
-            android:timePickerMode="spinner"
-            android:layout_height="wrap_content"></TimePicker>
-
-        <Button
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonDeadline"
-            android:layout_below="@id/datePicker1"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="#1976d2"
-            android:text="OK"
-            android:textColor="#ffffff"/>
+            android:id="@+id/deadlinePicker"
+            android:layout_height="wrap_content">
+            <DatePicker
+                android:id="@+id/datePicker1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:datePickerMode="spinner"
+                android:calendarViewShown="false"/>
+            <TimePicker
+                android:layout_width="wrap_content"
+                android:id="@+id/timePicker"
+                android:layout_toRightOf="@id/datePicker1"
+                android:timePickerMode="spinner"
+                android:layout_height="wrap_content"></TimePicker>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonDeadline"
+                android:layout_below="@id/datePicker1"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="#1976d2"
+                android:text="OK"
+                android:textColor="#ffffff"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/colorPicker"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#707070"
+                android:id="@+id/colorTitle"
+                android:textSize="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
+                android:text="Pick a Color"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonColorPick"
+                android:layout_below="@id/colorTitle"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="#1976d2"
+                android:text="OK"
+                android:textColor="#ffffff"/>
+
+        </RelativeLayout>
+
+
 
     </RelativeLayout>
 

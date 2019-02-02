@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="bottom"
+    android:gravity="top"
     tools:context=".MainActivity"
     app:umanoPanelHeight="0dp"
     app:umanoShadowHeight="5dp">
@@ -24,13 +24,22 @@
             app:theme="@style/ToolBarStyle">
         </android.support.v7.widget.Toolbar>
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_arrow_down"
+            android:id="@+id/arrow_down"
+            android:layout_below="@id/toolbar"
+            android:layout_marginTop="10dp"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:id="@+id/taskInfo"
             android:textSize="17sp"
-            android:layout_below="@id/toolbar"
+            android:layout_below="@id/arrow_down"
             android:text="What should I finish ?"/>
 
         <android.support.v7.widget.RecyclerView
@@ -57,12 +66,48 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <include layout="@layout/task_onhold" />
+        android:layout_height="wrap_content">
         <CalendarView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/calendar"></CalendarView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/task_onhold"
+            android:layout_below="@id/calendar"
+            android:orientation="vertical"
+            android:background="@android:color/white">
+
+            <Button
+                android:layout_width="match_parent"
+                android:textColor="#ffffff"
+                android:layout_height="wrap_content"
+                android:text="EDIT"
+                android:background="#1976d2"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:text="DELETE"
+                android:background="#d32f2f"/>
+
+
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_arrow_up"
+            android:id="@+id/arrow_up"/>
+
     </RelativeLayout>
 
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>
