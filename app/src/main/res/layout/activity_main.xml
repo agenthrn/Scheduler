@@ -47,6 +47,14 @@
             android:layout_below="@id/taskInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnCheck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rvTaskResult"
+            android:text="CHECK"/>
+
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -97,6 +105,7 @@
                 android:textColor="#ffffff"
                 android:text="DELETE"
                 android:background="#d32f2f"/>
+
 
 
         </LinearLayout>

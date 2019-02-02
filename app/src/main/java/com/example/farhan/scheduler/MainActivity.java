@@ -11,8 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.view.View;
@@ -46,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView text1l;
 
+    private Button btn;
+    private LinearLayout linearLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +58,16 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Scheduler");
+
+        btn = (Button)findViewById(R.id.btnCheck);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               Intent i = new Intent(MainActivity.this, Notification.class);
+               startActivity(i);
+            }
+        });
+
 
         arrowDown = (ImageView) findViewById(R.id.arrow_down);
         arrowUp = (ImageView) findViewById(R.id.arrow_up);

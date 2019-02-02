@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CreateTask" />
-        <activity android:name=".SearchTask"></activity>
+        <activity android:name=".SearchTask" />
+        <activity android:name=".Notification"></activity>
     </application>
 
 </manifest>
