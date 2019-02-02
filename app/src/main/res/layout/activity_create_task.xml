@@ -1,80 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_task"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.farhan.scheduler.CreateTask"
-    android:orientation="horizontal">
+    android:gravity="bottom"
+    tools:context=".CreateTask"
+    app:umanoPanelHeight="0dp"
+    app:umanoShadowHeight="5dp">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="#1976d2"
-        app:theme="@style/ToolBarStyle">
-    </android.support.v7.widget.Toolbar>
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#1976d2"
+            app:theme="@style/ToolBarStyle">
+        </android.support.v7.widget.Toolbar>
 
-    <EditText
-        android:layout_width="350dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:hint="Task"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.138" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_below="@id/toolbar"
+            android:id="@+id/etTask"
+            android:layout_height="39dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:hint="Task"
+            />
 
-    <EditText
-        android:id="@+id/etDate"
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="388dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:editable="false"
-        android:ems="10"
-        android:hint="Date"
-        android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <EditText
+            android:id="@+id/etDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_below="@id/etTask"
+            android:focusable="false"
+            android:hint="Date"
+            android:inputType="date"
+             />
 
-    <EditText
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="328dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:id="@+id/etStartToRemind"
-        android:ems="10"
-        android:hint="Start to Remind"
-        android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_below="@id/etDate"
+            android:id="@+id/etStartToRemind"
+            android:ems="10"
+            android:hint="Start to Remind"
+            android:inputType="date"
+             />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="351dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Color"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etStartToRemind"
-        app:layout_constraintVertical_bias="0.025" />
+        <EditText
+            android:id="@+id/etColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_below="@id/etStartToRemind"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:hint="Color"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/task_date"
+        android:layout_height="wrap_content"
+        tools:showIn="@layout/activity_create_task">
+
+        <DatePicker
+            android:id="@+id/datePicker1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"/>
+        <TimePicker
+            android:layout_width="wrap_content"
+            android:id="@+id/timePicker"
+            android:layout_toRightOf="@id/datePicker1"
+            android:timePickerMode="spinner"
+            android:layout_height="wrap_content"></TimePicker>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonDeadline"
+            android:layout_below="@id/datePicker1"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#1976d2"
+            android:text="OK"
+            android:textColor="#ffffff"/>
+
+    </RelativeLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

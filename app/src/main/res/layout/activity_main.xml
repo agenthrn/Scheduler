@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.farhan.scheduler.MainActivity"
-    android:orientation="horizontal">
+    android:gravity="bottom"
+    tools:context=".MainActivity"
+    app:umanoPanelHeight="0dp"
+    app:umanoShadowHeight="5dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/rootView"
         android:layout_height="match_parent">
+
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -37,7 +42,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            >
             <devs.mulham.horizontalcalendar.HorizontalCalendarView
                 android:id="@+id/calendarView"
                 android:layout_width="match_parent"
@@ -49,6 +55,18 @@
         </android.support.design.widget.AppBarLayout>
 
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/task_onhold" />
+        <CalendarView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/calendar"></CalendarView>
+    </RelativeLayout>
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
 
-</LinearLayout>
+
+

@@ -12,6 +12,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
+import android.widget.TimePicker;
+
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -21,25 +24,26 @@ public class CreateTask extends AppCompatActivity {
     Toolbar toolbar;
     private EditText mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDataSetListener;
+    private SlidingUpPanelLayout mLayout;
+    private TimePicker timePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_task);
 
+        mLayout = (SlidingUpPanelLayout) findViewById(R.id.create_task);
+
+        timePicker = (TimePicker) findViewById(R.id.timePicker);
+
+        timePicker.setIs24HourView(true);
+        timePicker.setCurrentHour(Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
+
         mDisplayDate = (EditText) findViewById(R.id.etDate);
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dialog = new DatePickerDialog(CreateTask.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDataSetListener, year, month, day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
+                mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
             }
         });
 

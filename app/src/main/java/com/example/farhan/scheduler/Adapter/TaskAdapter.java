@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.farhan.scheduler.MainActivity;
 import com.example.farhan.scheduler.R;
 import com.example.farhan.scheduler.Task;
 
@@ -15,15 +17,26 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     private ArrayList<Task> dataSet;
 
+
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView title,date,time;
+
 
         ViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.tvTitle);
             date = (TextView) itemView.findViewById(R.id.tvDate);
             time = (TextView) itemView.findViewById(R.id.tvTime);
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
 
         }
     }
