@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +13,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.example.farhan.scheduler.Adapter.GridAdapter;
@@ -22,8 +20,8 @@ import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.Calendar;
 
-public class CreateTask extends AppCompatActivity {
-    private static final String TAG ="CreateTask";
+public class EditTask extends AppCompatActivity {
+    private static final String TAG ="EditTask";
     Toolbar toolbar;
     private EditText mDisplayDate, mDisplayColor;
     private DatePickerDialog.OnDateSetListener mDataSetListener;
@@ -36,30 +34,30 @@ public class CreateTask extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_task);
+        setContentView(R.layout.activity_edit_task);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("New Task");
+        getSupportActionBar().setTitle("Edit Task");
 
-        colorGridView = (GridView) findViewById(R.id.gvColorPicker) ;
+        colorGridView = (GridView) findViewById(R.id.gvColorPickerEdit) ;
 
-        mLayout = (SlidingUpPanelLayout) findViewById(R.id.create_task);
+        mLayout = (SlidingUpPanelLayout) findViewById(R.id.edit_task);
 
-        buttonDeadline = (Button) findViewById(R.id.buttonDeadline);
-        buttonColorPicker = (Button) findViewById(R.id.buttonColorPick);
+        buttonDeadline = (Button) findViewById(R.id.buttonDeadlineEdit);
+        buttonColorPicker = (Button) findViewById(R.id.buttonColorPickEdit);
 
-        deadlinePicker = (RelativeLayout) findViewById(R.id.deadlinePicker);
-        colorPicker = (RelativeLayout) findViewById(R.id.colorPicker);
+        deadlinePicker = (RelativeLayout) findViewById(R.id.deadlinePickerEdit);
+        colorPicker = (RelativeLayout) findViewById(R.id.colorPickerEdit);
         deadlinePicker.setVisibility(View.GONE);
         colorPicker.setVisibility(View.GONE);
 
-        timePicker = (TimePicker) findViewById(R.id.timePicker);
+        timePicker = (TimePicker) findViewById(R.id.timePickerEdit);
 
         timePicker.setIs24HourView(true);
         timePicker.setCurrentHour(Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
 
-        mDisplayDate = (EditText) findViewById(R.id.etDate);
-        mDisplayColor = (EditText) findViewById(R.id.etColor);
+        mDisplayDate = (EditText) findViewById(R.id.etDateEdit);
+        mDisplayColor = (EditText) findViewById(R.id.etColorEdit);
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

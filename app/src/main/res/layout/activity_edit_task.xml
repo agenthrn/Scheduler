@@ -2,11 +2,11 @@
 <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/create_task"
+    android:id="@+id/edit_task"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
-    tools:context=".CreateTask"
+    tools:context=".EditTask"
     app:umanoPanelHeight="0dp"
     app:umanoShadowHeight="5dp">
 
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height ="wrap_content"
             android:layout_below="@id/toolbar"
-            android:id="@+id/etTask"
+            android:id="@+id/etTaskEdit"
             android:minLines="2"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
@@ -36,17 +36,17 @@
             />
 
         <EditText
-            android:id="@+id/etDate"
+            android:id="@+id/etDateEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="15dp"
             android:layout_marginStart="8dp"
-            android:layout_below="@id/etTask"
+            android:layout_below="@id/etTaskEdit"
             android:focusable="false"
             android:hint="Deadline"
             android:inputType="date"
-             />
+            />
 
         <EditText
             android:layout_width="match_parent"
@@ -54,21 +54,21 @@
             android:layout_marginEnd="8dp"
             android:layout_marginTop="15dp"
             android:layout_marginStart="8dp"
-            android:layout_below="@id/etDate"
-            android:id="@+id/etStartToRemind"
+            android:layout_below="@id/etDateEdit"
+            android:id="@+id/etStartToRemindEdit"
             android:ems="10"
             android:hint="Start to Remind"
             android:inputType="date"
-             />
+            />
 
         <EditText
-            android:id="@+id/etColor"
+            android:id="@+id/etColorEdit"
             android:focusable="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_below="@id/etStartToRemind"
+            android:layout_below="@id/etStartToRemindEdit"
             android:layout_marginStart="8dp"
             android:layout_marginTop="15dp"
             android:hint="Color"
@@ -79,32 +79,32 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/task_date"
+        android:id="@+id/task_date_edit"
         android:layout_height="wrap_content"
         tools:showIn="@layout/activity_create_task">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:id="@+id/deadlinePicker"
+            android:id="@+id/deadlinePickerEdit"
             android:layout_height="wrap_content">
             <DatePicker
-                android:id="@+id/datePicker1"
+                android:id="@+id/datePicker1Edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:datePickerMode="spinner"
                 android:calendarViewShown="false"/>
             <TimePicker
                 android:layout_width="wrap_content"
-                android:id="@+id/timePicker"
-                android:layout_toRightOf="@id/datePicker1"
+                android:id="@+id/timePickerEdit"
+                android:layout_toRightOf="@id/datePicker1Edit"
                 android:timePickerMode="spinner"
                 android:layout_height="wrap_content"></TimePicker>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/buttonDeadline"
-                android:layout_below="@id/datePicker1"
+                android:id="@+id/buttonDeadlineEdit"
+                android:layout_below="@id/datePicker1Edit"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
@@ -115,24 +115,24 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:id="@+id/colorPicker"
+            android:id="@+id/colorPickerEdit"
             android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#707070"
-                android:id="@+id/colorTitle"
+                android:id="@+id/colorTitleEdit"
                 android:textSize="20dp"
                 android:gravity="center_horizontal"
                 android:layout_margin="10dp"
                 android:text="Pick a Color"/>
 
             <GridView
-                android:layout_below="@id/colorTitle"
+                android:layout_below="@id/colorTitleEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/gvColorPicker"
+                android:id="@+id/gvColorPickerEdit"
                 android:columnWidth="80dp"
                 android:numColumns="6"
                 android:verticalSpacing="5dp"
@@ -143,8 +143,8 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/buttonColorPick"
-                android:layout_below="@id/gvColorPicker"
+                android:id="@+id/buttonColorPickEdit"
+                android:layout_below="@id/gvColorPickerEdit"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"

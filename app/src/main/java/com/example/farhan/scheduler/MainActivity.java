@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
@@ -44,11 +45,11 @@ public class MainActivity extends AppCompatActivity {
     private SlidingUpPanelLayout mLayout;
     private CalendarView calendar;
     private View task_onhold;
-    private ImageView arrowDown,arrowUp;
+    private ImageView arrowUpMain,arrowDownMain;
 
     private TextView text1l;
 
-    private Button btn;
+    private Button btn, btnEditTask, btnDeleteTask;
     private LinearLayout linearLayout;
 
     @Override
@@ -60,17 +61,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Scheduler");
 
         btn = (Button)findViewById(R.id.btnCheck);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               Intent i = new Intent(MainActivity.this, Notification.class);
-               startActivity(i);
-            }
-        });
+        btnEditTask = (Button) findViewById(R.id.btnEditTask);
 
 
-        arrowDown = (ImageView) findViewById(R.id.arrow_down);
-        arrowUp = (ImageView) findViewById(R.id.arrow_up);
+        arrowUpMain = (ImageView) findViewById(R.id.arrow_up_main);
+        arrowDownMain = (ImageView) findViewById(R.id.arrow_down);
         text1l = (TextView) findViewById(R.id.taskInfo);
 
         mLayout = (SlidingUpPanelLayout) findViewById(R.id.activity_main);
@@ -85,6 +80,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         addData();
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, Notification.class);
+                startActivity(i);
+            }
+        });
+
+        btnEditTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,EditTask.class));
+            }
+        });
 
         recyclerView = (RecyclerView) findViewById(R.id.rvTaskResult);
         adapter = new TaskAdapter(data);
@@ -111,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 .defaultSelectedDate(Calendar.getInstance())
                 .build();
 
-        arrowDown.setOnClickListener(new View.OnClickListener() {
+        arrowUpMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 task_onhold.setVisibility(View.GONE);
@@ -120,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        arrowUp.setOnClickListener(new View.OnClickListener() {
+        arrowDownMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mLayout.setPanelState(PanelState.COLLAPSED);
@@ -183,18 +193,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu,menu);
+        SearchView searchView = (SearchView) menu.findItem(R.id.searchForm).getActionView();
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+        searchView.setQueryHint("Task");
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
-            case R.id.search:
-                Intent addIntent = new Intent(MainActivity.this, SearchTask.class);
-                startActivity(addIntent);
-                break;
+
             case R.id.add:
-                addIntent = new Intent(MainActivity.this, CreateTask.class);
+                Intent addIntent = new Intent(MainActivity.this, CreateTask.class);
                 startActivity(addIntent);
                 break;
         }

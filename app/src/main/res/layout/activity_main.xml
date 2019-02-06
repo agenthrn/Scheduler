@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="top"
+    android:gravity="bottom"
     tools:context=".MainActivity"
     app:umanoPanelHeight="0dp"
     app:umanoShadowHeight="5dp">
@@ -24,14 +24,7 @@
             app:theme="@style/ToolBarStyle">
         </android.support.v7.widget.Toolbar>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/ic_arrow_down"
-            android:id="@+id/arrow_down"
-            android:layout_below="@id/toolbar"
-            android:layout_marginTop="10dp"/>
+
 
         <TextView
             android:layout_width="match_parent"
@@ -39,7 +32,7 @@
             android:layout_margin="10dp"
             android:id="@+id/taskInfo"
             android:textSize="17sp"
-            android:layout_below="@id/arrow_down"
+            android:layout_below="@id/toolbar"
             android:text="What should I finish ?"/>
 
         <android.support.v7.widget.RecyclerView
@@ -61,6 +54,13 @@
 
             android:layout_alignParentBottom="true"
             >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_arrow_up"
+                android:id="@+id/arrow_up_main"
+                android:background="#FFFFFF"/>
             <devs.mulham.horizontalcalendar.HorizontalCalendarView
                 android:id="@+id/calendarView"
                 android:layout_width="match_parent"
@@ -75,14 +75,21 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_arrow_down"
+            android:id="@+id/arrow_down"/>
         <CalendarView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/arrow_down"
             android:id="@+id/calendar"></CalendarView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -96,6 +103,7 @@
                 android:textColor="#ffffff"
                 android:layout_height="wrap_content"
                 android:text="EDIT"
+                android:id="@+id/btnEditTask"
                 android:background="#1976d2"/>
 
             <Button
@@ -103,19 +111,14 @@
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:textColor="#ffffff"
+                android:id="@+id/btnDeleteTask"
                 android:text="DELETE"
                 android:background="#d32f2f"/>
 
 
 
         </LinearLayout>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_arrow_up"
-            android:id="@+id/arrow_up"/>
+
 
     </RelativeLayout>
 
