@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -25,13 +26,14 @@ import java.util.Calendar;
 public class CreateTask extends AppCompatActivity {
     private static final String TAG ="CreateTask";
     Toolbar toolbar;
-    private EditText mDisplayDate, mDisplayColor;
+    private EditText mDisplayDate, mDisplayColor, mDisplayReminder;
     private DatePickerDialog.OnDateSetListener mDataSetListener;
     private SlidingUpPanelLayout mLayout;
     private TimePicker timePicker;
-    private Button buttonDeadline, buttonColorPicker;
-    private RelativeLayout deadlinePicker, colorPicker;
+    private Button buttonDeadline, buttonColorPicker, buttonReminder;
+    private RelativeLayout deadlinePicker, colorPicker, reminderPicker;
     private GridView colorGridView;
+    private NumberPicker npReminder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +49,16 @@ public class CreateTask extends AppCompatActivity {
 
         buttonDeadline = (Button) findViewById(R.id.buttonDeadline);
         buttonColorPicker = (Button) findViewById(R.id.buttonColorPick);
+        buttonReminder = (Button) findViewById(R.id.buttonReminder);
 
         deadlinePicker = (RelativeLayout) findViewById(R.id.deadlinePicker);
         colorPicker = (RelativeLayout) findViewById(R.id.colorPicker);
+        reminderPicker = (RelativeLayout) findViewById(R.id.reminderPicker);
+        reminderPicker.setVisibility(View.GONE);
         deadlinePicker.setVisibility(View.GONE);
         colorPicker.setVisibility(View.GONE);
+
+        npReminder = (NumberPicker) findViewById(R.id.npReminder);
 
         timePicker = (TimePicker) findViewById(R.id.timePicker);
 
@@ -59,6 +66,7 @@ public class CreateTask extends AppCompatActivity {
         timePicker.setCurrentHour(Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
 
         mDisplayDate = (EditText) findViewById(R.id.etDate);
+        mDisplayReminder = (EditText) findViewById(R.id.etStartToRemind);
         mDisplayColor = (EditText) findViewById(R.id.etColor);
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +81,13 @@ public class CreateTask extends AppCompatActivity {
             public void onClick(View view) {
 
                 colorPicker.setVisibility(View.VISIBLE);
+                mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+            }
+        });
+        mDisplayReminder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reminderPicker.setVisibility(View.VISIBLE);
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
             }
         });
@@ -101,7 +116,22 @@ public class CreateTask extends AppCompatActivity {
 
             }
         });
+        buttonReminder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                reminderPicker.setVisibility(View.GONE);
+            }
+        });
         colorGridView.setAdapter(new GridAdapter(this));
+        npReminder.setMinValue(1);
+        npReminder.setMaxValue(20);
+        npReminder.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+
+            }
+        });
 
     }
 

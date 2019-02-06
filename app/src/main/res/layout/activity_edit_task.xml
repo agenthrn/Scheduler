@@ -56,6 +56,7 @@
             android:layout_marginStart="8dp"
             android:layout_below="@id/etDateEdit"
             android:id="@+id/etStartToRemindEdit"
+            android:focusable="false"
             android:ems="10"
             android:hint="Start to Remind"
             android:inputType="date"
@@ -153,6 +154,43 @@
                 android:text="OK"
                 android:textColor="#ffffff"/>
 
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/reminderPickerEdit">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/numberPickerEdit"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toStartOf="@id/npReminderEdit"
+                    android:text="Day - "
+                    android:id="@+id/dayInfo"
+                    />
+                <NumberPicker
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/npReminderEdit"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"></NumberPicker>
+
+            </RelativeLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonReminderEdit"
+                android:layout_below="@id/numberPickerEdit"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="#1976d2"
+                android:text="OK"
+                android:textColor="#ffffff"/>
         </RelativeLayout>
 
 
