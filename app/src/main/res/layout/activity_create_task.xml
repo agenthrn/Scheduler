@@ -19,6 +19,12 @@
             android:layout_height="56dp"
             android:background="#1976d2"
             app:theme="@style/ToolBarStyle">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Task"
+                android:textColor="#FFFFFF"/>
         </android.support.v7.widget.Toolbar>
 
         <EditText
